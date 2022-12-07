@@ -1,6 +1,11 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
-from .serializers import CommentSerializer, FollowSerializer, GroupSerializer, PostSerializer
+from .serializers import (
+    CommentSerializer,
+    FollowSerializer,
+    GroupSerializer,
+    PostSerializer
+)
 from posts.models import (
     Follow,
     Group,
@@ -33,8 +38,10 @@ class CommentViewSet(viewsets.ModelViewSet):
         serializer.save(author=self.request.user, post=post)
 
 
-# class FollowViewSet(viewsets.ModelViewSet):
-#     serializer_class = FollowSerializer
+class FollowViewSet(viewsets.ModelViewSet):
+    serializer_class = FollowSerializer
 
-#     def get_queryset(self):
-#         return super().get_queryset()
+    def get_queryset(self):
+        user = self.request.user
+        return user.follower.all()
+
