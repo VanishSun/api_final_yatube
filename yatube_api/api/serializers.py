@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from posts.models import Comment, Follow, Group, Post
+from posts.models import Comment, Follow, Group, Post, User
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -39,7 +39,11 @@ class FollowSerializer(serializers.ModelSerializer):
         slug_field='username',
         read_only=True
     )
+    following = serializers.SlugRelatedField(
+        slug_field='username',
+        queryset=User.objects.all()
+    )
 
     class Meta:
-        fields = '__all__'
+        fields = ('user', 'following')
         model = Follow
