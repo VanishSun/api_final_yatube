@@ -12,7 +12,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
         model = Post
-        read_only_fields = ('author', 'image')
+        read_only_fields = ('author',)
 
 
 class CommentSerializer(serializers.ModelSerializer):
