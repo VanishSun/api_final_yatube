@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
+
 from .serializers import (
     CommentSerializer,
     FollowSerializer,
@@ -45,3 +46,5 @@ class FollowViewSet(viewsets.ModelViewSet):
         user = self.request.user
         return user.follower.all()
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
