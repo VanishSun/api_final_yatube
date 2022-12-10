@@ -48,7 +48,7 @@ python3 manage.py runserver
 
 ```http://127.0.0.1:8000/redoc/``` - docs проекта в формате redoc
 
-## Примеры тветов API:
+## Примеры ответов API:
 
 ```http://127.0.0.1:8000/api/v1/posts/?limit=2&offset=2```
 #### Ответ:
