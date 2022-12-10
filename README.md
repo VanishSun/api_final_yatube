@@ -51,7 +51,6 @@ python3 manage.py runserver
 ## Примеры тветов API:
 
 ```http://127.0.0.1:8000/api/v1/posts/?limit=2&offset=2```
-
 #### Ответ:
 ```
 {
@@ -80,6 +79,7 @@ python3 manage.py runserver
 ```
 
 ```http://127.0.0.1:8000/api/v1/posts/3/comments/<comments_id>/```
+#### Ответ:
 ```
 {
     "id": 3,
