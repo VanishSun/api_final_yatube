@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import filters, permissions, serializers, viewsets
+from rest_framework import filters, permissions, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.viewsets import mixins, GenericViewSet
 
@@ -53,11 +53,4 @@ class FollowViewSet(
         return user.follower.all()
 
     def perform_create(self, serializer):
-        user = self.request.user
-        following = serializer.validated_data.get('following')
-        if user != following:
-            serializer.save(user=user)
-        else:
-            raise serializers.ValidationError(
-                'Попытка подписаться на самого себя!'
-            )
+        serializer.save(user=self.request.user)
