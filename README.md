@@ -89,3 +89,11 @@ python3 manage.py runserver
     "post": 3
 }
 ```
+
+## License:
+
+MIT
+
+## Author:
+
+Ivan Verozub
